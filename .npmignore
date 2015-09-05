@@ -1,8 +1,8 @@
 .DS_Store
 *.log
-node_modules
-dist
-lib
+examples
+test
 coverage
 _book
-*.tmp
+book.json
+docs
