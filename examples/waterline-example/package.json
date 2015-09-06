@@ -1,0 +1,22 @@
+{
+  "name": "waterline-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node src/main.js"
+  },
+  "author": "Shailesh",
+  "license": "MIT",
+  "dependencies": {
+    "graphql": "^0.4.3",
+    "lodash": "^3.10.1",
+    "sails-disk": "^0.10.8",
+    "waterline": "^0.10.26",
+    "waterline-to-graphql": "file:../.."
+  },
+  "devDependencies": {
+    "babel": "^5.8.23"
+  }
+}

@@ -5,11 +5,6 @@ import {
 }
 from 'graphql';
 
-import {
-  mutationWithClientMutationId
-}
-from 'graphql-relay';
-
 function waterlineTypesToGraphQLType(attribute) {
   switch(attribute.type) {
     case 'string':
@@ -120,9 +115,6 @@ function capitalizeFirstLetter(string) {
 function createGraphQLMutations(waterlineModel, graphqlType, modelID, GraphQLSchemaManager) {
   var mutations = {};
   var attributes = waterlineModel._attributes;
-  attributes = _.omit(attributes, function(key){
-    return key === 'id' || key === 'createdAt' || key=== 'updatedAt';
-  });
   var convertedFields = {};
   _.mapKeys(attributes, function(attribute, key) {
     if(attribute.type) {
@@ -137,31 +129,59 @@ function createGraphQLMutations(waterlineModel, graphqlType, modelID, GraphQLSch
   associations.forEach((association) => {
     if(association.model) {
       convertedFields[association.alias] = {
-        type: GraphQLSchemaManager.types[association.model]
+        type: new GraphQLInputObjectType(
+           GraphQLSchemaManager.types[association.model]),
+        name: association.alias
       };
     } else if(association.collection) {
       convertedFields[association.collection + 's'] = {
-        type: new GraphQLList(GraphQLSchemaManager.types[association.collection]),
+        type: new GraphQLInputObjectType(
+           GraphQLSchemaManager.types[association.collection]),
+        name: association.alias
       };
     }
   });*/
 
-
-
-  /*mutations['create' + capitalizeFirstLetter(modelID)] = mutationWithClientMutationId({
-    name: 'create' + capitalizeFirstLetter(modelID),
-    inputFields: convertedFields,
-    outputFields: convertedFields,
-    mutateAndGetPayload: (obj) => {
-      return waterlineModel.create(obj);
+ /* var associations = waterlineModel.associations;
+  associations.forEach((association) => {
+    if(association.model) {
+      convertedFields[association.alias] = {
+        type: new GraphQLInputObjectType(
+           GraphQLSchemaManager.types[association.model]),
+        name: 'create' + modelID + association.alias,
+        resolve: GraphQLSchemaManager.waterlineModels[association.model].create
+      };
+    } else if(association.collection) {
+      convertedFields[association.collection + 's'] = {
+        type: new GraphQLInputObjectType(
+           GraphQLSchemaManager.types[association.collection]),
+        name: 'create' + modelID + association.alias,
+        resolve: GraphQLSchemaManager.waterlineModels[association.collection].create
+      };
     }
   });*/
-  
+
   mutations['create' + capitalizeFirstLetter(modelID)] = {
     type: graphqlType,
     args: convertedFields,
-    resolve: waterlineModel.create
+    resolve: waterlineModel.create,
+    name: 'create' + modelID
   };
+
+  mutations['update' + capitalizeFirstLetter(modelID)] = {
+    type: graphqlType,
+    args: convertedFields,
+    resolve: waterlineModel.update,
+    name: 'update' + modelID
+  };
+
+  mutations['delete' + capitalizeFirstLetter(modelID)] = {
+    type: graphqlType,
+    args: convertedFields,
+    resolve: waterlineModel.delete,
+    name: 'delete' + modelID
+  };
+
   return mutations;
 }
 

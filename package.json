@@ -40,6 +40,9 @@
   "bugs": {
     "url": "https://github.com/agenthunt/waterline-to-graphql/issues"
   },
+  "dependencies": {
+    "lodash": "3.10.1"
+  },
   "homepage": "https://github.com/agenthunt/waterline-to-graphql",
   "devDependencies": {
     "babel": "^5.5.8",
@@ -59,8 +62,6 @@
     "webpack-dev-server": "^1.8.2"
   },
   "peerDependencies": {
-    "lodash": ">=3.10.1",
-    "graphql": ">=0.4.2",
-    "graphql-relay": ">=0.3.2"
+    "graphql": ">=0.4.2"
   }
 }
