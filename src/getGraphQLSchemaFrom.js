@@ -186,6 +186,10 @@ function createGraphQLMutations(waterlineModel, graphqlType, modelID, GraphQLSch
 }
 
 export default function getGraphQLSchemaFrom(models) {
+  if (!models) {
+    throw new Error('Invalid input args models is' + models);
+  }
+
   var GraphQLSchemaManager = {
     types: {},
     queries: {},
