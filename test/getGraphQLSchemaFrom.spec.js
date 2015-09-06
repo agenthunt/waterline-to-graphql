@@ -57,4 +57,24 @@ describe('getGraphQLSchemaFrom', () => {
       done();
     });
   });
+
+  it('test createUser', (done) => {
+    let schema = getGraphQLSchemaFrom(models);
+    let mutations = 'mutation test{ createUser(firstName:"hello", lastName:"Hellosson", email: "hello@hellosson.com"){ firstName, lastName}}'
+    graphql(schema, mutations)
+      .then((result) => {
+        expect(result).toEqual({
+          data: {
+            createUser: {
+              firstName: 'hello',
+              lastName: 'Hellosson'
+            }
+          }
+        });
+        done();
+      }).catch((error) => {
+      expect(error).toBe(null, error);
+      done();
+    });
+  });
 });
