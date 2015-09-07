@@ -21,7 +21,6 @@ module.exports = {
       required: true
     },
     phone: 'string',
-    title: 'string',
     posts: {
       collection: 'post',
       via: 'from'

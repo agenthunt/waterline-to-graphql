@@ -3,6 +3,10 @@
 Waterline to graphql adapter.
 This library converts waterline models to graphql types. 
 
+[![build status](https://img.shields.io/travis/agenthunt/waterline-to-graphql/master.svg?style=flat-square)](https://travis-ci.org/agenthunt/waterline-to-graphql) 
+[![npm version](https://img.shields.io/npm/v/waterline-to-graphql.svg?style=flat-square)](https://www.npmjs.com/package/agenthunt/waterline-to-graphql) 
+[![npm downloads](https://img.shields.io/npm/dm/waterline-to-graphql.svg?style=flat-square)](https://www.npmjs.com/package/waterline-to-graphql)
+
 
 ##Basic Usage: (See waterline-example in examples folder)
 
