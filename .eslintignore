@@ -4,3 +4,4 @@ lib/*
 **/server.js
 **/webpack.config*.js
 **/assets/*
+**/dependencies/*
