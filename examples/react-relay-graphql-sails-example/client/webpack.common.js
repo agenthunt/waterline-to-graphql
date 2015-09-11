@@ -16,27 +16,27 @@ module.exports = {
     },
     {
       test: /\.html$/,
-      loader: "file?name=[name].[ext]",
+      loader: 'file?name=[name].[ext]',
     },
     {
       test: /\.woff/,
-      loader: "url?limit=10000&mimetype=application/font-woff"
+      loader: 'url?limit=10000&mimetype=application/font-woff'
     },
     {
       test: /\.ttf/,
-      loader: "url?limit=10000&mimetype=application/octet-stream"
+      loader: 'url?limit=10000&mimetype=application/octet-stream'
     },
     {
       test: /\.eot/,
-      loader: "file"
+      loader: 'file'
     },
     {
       test: /\.svg/,
-      loader: "url?limit=10000&mimetype=image/svg+xml"
+      loader: 'url?limit=10000&mimetype=image/svg+xml'
     },
     {
       test: /\.png/,
-      loader: "file"
+      loader: 'file'
     }
   ],
   node: {

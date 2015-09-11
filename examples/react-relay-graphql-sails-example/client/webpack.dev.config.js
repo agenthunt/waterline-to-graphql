@@ -17,11 +17,11 @@ module.exports = {
     './client/src/js/bootstrap.js'
   ],
   output: {
-    path: __dirname + "/../assets",
-    publicPath: "http://localhost:3000/",
-    filename: "js/bundle.js"
+    path: __dirname + '/../assets',
+    publicPath: 'http://localhost:3000/',
+    filename: 'js/bundle.js'
   },
-  target: "web",
+  target: 'web',
   module: {
     preLoaders: commonConfig.preLoaders,
     loaders: loaders.concat(commonConfig.loaders)
