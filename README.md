@@ -94,8 +94,11 @@ let UserType = new GraphQLObjectType({
 
 ##Using with sails,express,relay:
 If  you are using with express/sails , you can define graphql middleware 
-as below. Add the following in config/http.js.
-###See (react-relay-graphql-sails-example)
+as below. 
+
+* ```npm i waterline-to-graphql```
+* Add the following in config/http.js. 
+
 
 ```javascript
     graphql: function(req, res, next) {
@@ -111,6 +114,8 @@ as below. Add the following in config/http.js.
       }
     }
 ```
+
+####See (react-relay-graphql-sails-example)
 
 
 ##TODO
