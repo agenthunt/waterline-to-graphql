@@ -1,18 +1,25 @@
-'use strict';
+"use strict";
 
-var webpack = require('webpack');
+var webpack = require("webpack");
 
 module.exports = {
   module: {
-    loaders: [
-      { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ }
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        options: {
+          presets: [["es2015", { modules: false }]]
+        }
+      }
     ]
   },
   output: {
-    library: 'WaterlineToGraphQL',
-    libraryTarget: 'umd'
+    library: "WaterlineToGraphQL",
+    libraryTarget: "umd"
   },
   resolve: {
-    extensions: ['', '.js']
+    extensions: [".js"]
   }
 };
